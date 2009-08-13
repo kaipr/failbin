@@ -1,0 +1,10 @@
+- form_for @project do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    = f.text_field :name
+  %p
+    = f.label :url
+    = f.text_field :url
+  %p
+    = f.submit @project.new_record? ? 'Create' : 'Update'

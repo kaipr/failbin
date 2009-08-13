@@ -1,0 +1,5 @@
+== Install
+For security reasons you have to change some strings before deploying:
+- REST_AUTH_SITE_KEY in config/initializiers/site_keys.rb
+- key and secret in config/initializers/session_store.rb
+- SECRET_STRING in config/environment.rb

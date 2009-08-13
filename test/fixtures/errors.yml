@@ -1,0 +1,13 @@
+one:
+  error_type_id: 1
+  rails_environment: MyString
+  request_type: MyString
+  url: MyString
+  thrown_at: 2009-05-18 14:22:42
+
+two:
+  error_type_id: 1
+  rails_environment: MyString
+  request_type: MyString
+  url: MyString
+  thrown_at: 2009-05-18 14:22:42

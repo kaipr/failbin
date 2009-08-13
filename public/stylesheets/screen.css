@@ -1,0 +1,186 @@
+/* @override http://localhost:3000/stylesheets/screen.css */
+
+/*
+  Blueprint reset
+  TODO: IE Bugfixes
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body { 
+  line-height: 1.5; 
+}
+
+/* Tables still need 'cellspacing="0"' in the markup. */
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+table, td, th { vertical-align: middle; }
+
+/* Remove possible quote marks (") from <q>, <blockquote>. */
+blockquote:before, blockquote:after, q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+/* Remove annoying border on linked images. */
+a img { border: none; }
+
+
+body, div, p {
+  font-family: Verdana, Helvetica, Sans-Serif, Arial;
+  font-size: 9pt;
+}
+body {
+  background-color: #f0fcff;
+}
+
+p {
+  margin: 4px 0;
+}
+
+a {
+  color: #1c94c4;
+}
+a:hover {
+  color: #eb8f00;
+  text-decoration: none;
+}
+a.delete_link {
+  color: #aa0000;
+}
+
+table {
+  width: 100%;
+  border-right: 1px solid #cfcfcf;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  font-weight: bold;
+  background-color: #f0f6f6;
+  border-left: 1px solid #999f9f;
+  border-top: 1px solid #999f9f;
+  border-bottom: 1px solid #808080;
+}
+td {
+  border-left: 1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf;
+}
+tr.current {
+  background-color: #ffee99;
+}
+
+label {
+  font-weight: bold;
+}
+input {
+  display: block;
+}
+input.checkbox {
+  display: inline;
+}
+
+ul.list {
+  margin-left: 25px;
+}
+
+#container {
+  position: absolute;
+  width: 1250px;
+  left: 50%;
+  margin-left: -625px;
+  background-color: #ffffff;
+}
+
+#header {
+  position: relative;
+  height: 60px;
+  background-color: #f0fcff;
+  overflow: hidden;
+  padding: 5px;
+  border-bottom: 1px solid #1c94c4;
+}
+#header h1 a {
+  font-size: 18pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+ul#main_navi, ul#sub_navi {
+  list-style: none;
+}
+ul#main_navi li, ul#sub_navi li {
+  float: left;
+}
+ul#main_navi li {
+  margin-right: 5px;
+}
+ul#sub_navi li {
+  margin-right: 10px;
+}
+ul#sub_navi {
+  position: absolute;
+  top: 35px;
+  right: 0;
+}
+
+#user_bar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#content {
+  clear: left;
+  padding: 8px;
+}
+#content h1 {
+  margin: 5px 0 8px 0;
+  font-size: 16pt;
+  font-weight: bold;
+  display: block;
+  color: #003344;
+}
+#content h2 {
+  margin: 10px 0 10px 0;
+  font-size: 15pt;
+  border-bottom: 1px solid #ccc;
+  color: #445566;
+}
+#content h3 {
+  margin: 5px 0 5px 0;
+  font-size: 11pt;
+  color: #333;
+}
+
+#content #backtrace_search {
+  margin-bottom: 10px;
+}
+#content #backtrace_search input {
+  display: inline;
+}
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}

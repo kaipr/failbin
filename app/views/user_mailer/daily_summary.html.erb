@@ -1,0 +1,16 @@
+This is your daily summary about your projects status.
+
+<%- @user_data.each do |user_data| -%>
+  Project: <%= user_data[:project].name %> (<%= project_error_types_url(user_data[:project]) %>)
+  <%- unless user_data[:active_error_types].empty? -%>
+    <%- user_data[:active_error_types].each do |error_type| -%>
+      - "<%= error_type.name %>" last occurred: <%= error_type.last_occurrence %>
+    <%- end -%>
+  <%- else -%>
+    There are no active error types on this project.
+  <%- end -%>
+  
+<%- end -%>
+
+
+You receive this email because you have configured "Receive daily summary" in your notification options of one or more projects.

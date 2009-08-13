@@ -1,0 +1,39 @@
+- title "Project: #{@project.name}"
+
+%h2 Details
+%p
+  %strong Project key:
+  = @project.project_key
+  %br
+  %em 
+    = "(Example: ExceptionNotifier.email_prefix = \"[#{@project.project_key}-production] \")"
+
+= render :partial => 'form'
+
+%h2 User Assignment
+%h3 Currently assigned users:
+%ul.list
+  - for user in @project.users
+    %li
+      = user.name
+      = link_to 'Remove', remove_user_project_path(@project, :user_id => user.id), :confirm => 'Are you sure?', :method => :delete, :class => 'delete_link' unless user.id == current_user.id
+
+%h3 Assign new user
+- unless @user_select.empty?
+  - form_for @new_project_user, :url => {:action => :add_user} do |f|
+    = f.label :user_id, 'User'
+    = f.select :user_id, @user_select
+
+    = f.submit 'Add User'
+- else
+  All users are already assigned to this project.
+  
+%h2 My Notifications
+- form_for @project_user, :url => update_notifications_project_path(@project), :method => :put do |f|
+  %p
+    = f.check_box :receive_new_error_type_notification, :class => 'checkbox'
+    = f.label :receive_new_error_type_notification
+  %p
+    = f.check_box :receive_daily_summary, :class => 'checkbox'
+    = f.label :receive_daily_summary
+  = f.submit 'Save'

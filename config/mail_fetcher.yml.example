@@ -1,0 +1,20 @@
+production:
+  server: imap.googlemail.com
+  port: 993
+  username: example@googlemail.com
+  password: 
+  ssl: true
+
+development:
+  server: imap.googlemail.com
+  port: 993
+  username: example@googlemail.com
+  password: 
+  ssl: true
+  
+staging:
+  server: imap.googlemail.com
+  port: 993
+  username: example@googlemail.com
+  password: 
+  ssl: true

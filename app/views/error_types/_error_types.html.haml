@@ -1,0 +1,19 @@
+%table
+  %tr
+    %th Status
+    %th= link_to_unless_current 'Message', both_project_error_types_path(error_types_type, @project, :sort_by => 'name', :search_string => params[:search_string])
+    %th= link_to_unless_current 'Location', both_project_error_types_path(error_types_type, @project, :sort_by => 'location', :search_string => params[:search_string])
+    %th= params[:sort_by] ? link_to('Last occurrence', both_project_error_types_path(error_types_type, @project, :search_string => params[:search_string])) : 'Last occurrence'
+    %th= link_to_unless_current 'Error count', both_project_error_types_path(error_types_type, @project, :sort_by => 'error_count', :search_string => params[:search_string])
+  - for error_type in @error_types
+    %tr
+      %td
+        - if error_type.open?
+          = link_to(error_type.new? ? 'New' : 'Reopen', project_error_type_path(@project, error_type, :status => ErrorType::STATUS_FIXED), :method => :put)
+        - elsif error_type.fixed?
+          Fixed
+      %td= link_to h(error_type.name), project_error_type_errors_path(@project, error_type)
+      %td= h(error_type.controller) + '#' + h(error_type.action)
+      %td= error_type.last_occurrence
+      %td= h error_type.error_count
+= will_paginate @error_types

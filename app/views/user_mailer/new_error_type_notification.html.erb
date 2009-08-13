@@ -1,0 +1,11 @@
+A new error type occurred in project: <%= @error_type.project.name %>
+
+Name: <%= @error_type.name %>
+Location: <%= "#{@error_type.controller}##{@error_type.action}" %>
+File: <%= "#{@error_type.file}, line #{@error_type.line}" %>
+
+Look at further details here:
+<%= project_error_type_url(@error_type.project, @error_type) %>
+
+
+You receive this email because you have configured "Receive new error type notification" in your notification options. If you don't want further notifications, edit your settings here: <%= edit_project_url(@error_type.project) %>

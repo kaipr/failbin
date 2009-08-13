@@ -1,0 +1,16 @@
+- title "Projects"
+
+%table
+  %tr
+    %th Name
+    %th Url
+    %th Error types
+    %th Errors
+  - for project in @projects
+    %tr
+      %td= link_to h(project.name), project_error_types_path(project)
+      %td= h project.url
+      %td= project.error_types_count
+      %td= project.error_count
+      
+%p= link_to "New Project", new_project_path

@@ -1,0 +1,17 @@
+one:
+  name: MyString
+  controller: MyString
+  action: MyString
+  file: MyString
+  line: 1
+  backtrace: MyText
+  error_count: 1
+
+two:
+  name: MyString
+  controller: MyString
+  action: MyString
+  file: MyString
+  line: 1
+  backtrace: MyText
+  error_count: 1

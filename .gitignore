@@ -1,0 +1,12 @@
+Capfile
+config/deploy.rb
+config/deploy/*
+config/database.yml
+config/mail_fetcher.yml
+log/*.log
+db/*.sqlite3
+tmp/**/*
+.rsync_cache
+*.sqlite3
+tmp/restart.txt
+.DS_Store

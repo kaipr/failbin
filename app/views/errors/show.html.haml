@@ -1,0 +1,82 @@
+- title @error_type.name
+- content_for :head do
+  = javascript_tag do
+    $(function() {
+    $("#error_details").tabs();
+    });
+
+
+%p
+  %strong Controller:
+  =h @error_type.controller
+%p
+  %strong Action:
+  =h @error_type.action
+%p
+  %strong First occurrence:
+  =h @error_type.first_occurrence
+%p
+  %strong Last occurrence:
+  =h @error_type.last_occurrence
+
+%h2= "##{@error.id}"
+
+#error_details
+  %ul
+    %li= link_to 'Overview', '#error_details_overview'
+    %li= link_to 'Backtrace', '#error_details_backtrace'
+    %li= link_to 'Environment', '#error_details_environment'
+  #error_details_overview
+    %table
+      %tr
+        %td Rails environment
+        %td=h @error.rails_environment
+      %tr
+        %td Thrown at
+        %td=h @error.thrown_at
+      %tr
+        %td Request type
+        %td=h @error.request_type
+      %tr
+        %td URL
+        %td= link_to h(@error.url), @error.url
+      %tr
+        %td File
+        %td=h "#{@error_type.file}, line #{@error_type.line}"
+      %tr
+        %td Parameters
+        %td=h @error.params.inspect
+      %tr
+        %td Session
+        %td=h @error.session
+      %tr
+        %td Backtrace
+        %td= @error_type.backtrace.split("\n")[0..4].join("<br />")
+  #error_details_backtrace
+    =h(@error_type.backtrace).gsub("\n", '<br />')
+  #error_details_environment
+    %table
+      %tr
+        %th Variable
+        %th Value
+      - @error.environment.sort.each do |var, value|
+        %tr
+          %td=h var
+          %td=h wrap_text(value, 80)
+
+%h2 Other occurrences
+%table
+  %tr
+    %th Rails environment
+    %th Request type
+    %th Url
+    %th Thrown at
+  - page = params[:page].to_i > 0 ? {:page => params[:page].to_i} : {}
+  - for error in @errors
+    - error_link = project_error_type_error_path(@project, @error_type, error, page)
+    %tr{:class => error.id == @error.id ? 'current' : nil, :onclick => "window.location=\"#{error_link}\""}
+      %td=h error.rails_environment
+      %td=h error.request_type
+      %td=h error.url
+      %td=h error.thrown_at
+= will_paginate @errors

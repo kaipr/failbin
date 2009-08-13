@@ -1,0 +1,27 @@
+- title "#{@project.name} (#{@project.url})"
+- content_for :head do
+  = javascript_tag do
+    $(function() {
+    $("#error_types").tabs();
+    });
+  = javascript_tag do
+    $('.pagination a').live('click', function(){ jQuery.get($(this).attr('href'), function(data){ $('#error_types div').html(data); });return false; });
+    $('#error_types th a').live('click', function(){ jQuery.get($(this).attr('href'), function(data){ $('#error_types div').html(data); });return false; });
+
+= link_to "Show and edit project details", project_path(@project)
+
+%h2 
+  Error Types
+  - if params[:search_string]
+    - show_all_link = link_to 'show all', project_error_types_path(@project)
+    = "with backtrace matching \"#{h(params[:search_string])}\" (#{show_all_link})" 
+
+#backtrace_search
+  - form_tag project_error_types_path(@project), :method => :get do
+    = text_field_tag 'search_string'
+    = submit_tag 'Search in backtraces'
+
+#error_types
+  %ul
+    %li= link_to 'Open', open_project_error_types_path(@project, :search_string => params[:search_string])
+    %li= link_to 'Fixed', fixed_project_error_types_path(@project, :search_string => params[:search_string])
