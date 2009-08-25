@@ -18,6 +18,8 @@ class Project < ActiveRecord::Base
     sum
   end
   
+  private
+  
   def set_project_key
     self.project_key = Digest::SHA1.hexdigest("#{rand(10000)}--#{SECRET_STRING}--#{self.name}--#{Time.now}")
     set_project_key if Project.find_by_project_key(self.project_key)
